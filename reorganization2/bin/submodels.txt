@@ -1,0 +1,7 @@
+1 = bg.hmm
+2 = flank-trained.hmm
+3 = peak.hmm
+4 = flank-trained.hmm
+5 = site.hmm
+6 = flank-trained.hmm
+

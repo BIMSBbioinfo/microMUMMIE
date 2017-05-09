@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use strict;
+
+my $usage="$0 <files> <old-text> <new-text>";
+die "$usage\n" unless @ARGV>2;
+my ($newText,$oldText)=(pop @ARGV,pop @ARGV);
+#if($newText eq "") {$newText="\'\'"}
+my @files=@ARGV;
+foreach my $file (@files)
+  {
+    my $command="sub $file \"$oldText\" \"$newText\"";
+    print "$command\n";
+    system($command);
+  }

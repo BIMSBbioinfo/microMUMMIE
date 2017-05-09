@@ -1,0 +1,29 @@
+In order to run the program you will need following:
+
+1) mature-miRNAs.txt : File containing list of miRNAs for prediction. It should  be tab seprated file.
+For e.g.
+hsa-mir-21      TAGCTTATCAGACTGATGTTGA
+hsa-mir-155     TTAATGCTAATCGTGATAGGGGT
+ebv-mir-bhrf1-2 TATCTTTTGCGGCAGAAATTGA
+ebv-mir-bhrf1-3 TAACGGGAAGTGTGTAAGCACA
+
+2) Genome.2bit: File with genome in 2bit format. Should use one which was used to run Paralyzer.
+
+3) Path to output directory from Paralyzer: The third variable should be path to the Paralyzer output. The directory should contain group and distribution file. Just one change, please change Aligned to in groups
+file to Aligned_to. 
+
+4) Initials of the lirary. This is just to pick up the cluster, group and distribution file from the directory path above.
+
+5) output.gff: This is the file contanining output from all the runs of microMUMMIE. Individual predictions file are also created. This is just concatenation of all that files.
+
+6) Decoding to use. 0 or 1
+
+7) Coordinate file for 3'utr, 5'utr or coding region or full transcript. It should look like this, also should be tab-seprated:
+7       127231354       127231759       ARF5    +       ENST00000000233
+12      9092961 9094413 M6PR    -       ENST00000000412
+12      2912425 2913124 FKBP4   +       ENST00000001008
+
+The file containing list of all UTR is: orderedtc_scUTRs.txt
+
+microMUMMIE.pl <mature-miRNAs.txt> <genome.2bit> <paralyzer-output-dir> <library-name> <out.gff> <posterior-decoding:0/1> <UTRs.txt>
+

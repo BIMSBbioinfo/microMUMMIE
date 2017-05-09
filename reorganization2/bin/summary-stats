@@ -1,0 +1,47 @@
+#!/usr/bin/perl
+use strict;
+use SummaryStats;
+
+my ($minX,$maxX);
+my $sumX=0;
+my $sumXX=0;
+my $n=0;
+while(<STDIN>) {
+  chomp;
+  if(/^\s*(\S+)/) {
+    my $x=$1;
+    $sumX+=$x;
+    $sumXX+=$x*$x;
+    $minX=$maxX=$x if $n==0;
+    $minX=$x if $x<$minX;
+    $maxX=$x if $x>$maxX;
+    ++$n;
+  }
+}
+my $mean=$sumX/$n;
+my $var=$n>1 ? ($sumXX-$sumX*$sumX/$n)/($n-1) : undef;
+if($var<0) {$var=0}
+my $stddev=sqrt($var);
+print "$mean +/- $stddev ($minX - $maxX) N=$n, sum=$sumX\n";
+
+
+
+#exit;
+#my @array;
+#my $sum=0;
+#while(<STDIN>)
+#  {
+#    if(/^\s*(\S+)/)
+#      {
+#	push @array,$1;
+#        $sum+=$1;
+#      }
+#  }
+#
+#my ($mean,$stddev,$min,$max)=SummaryStats::summaryStats(\@array);
+#my $N=@array;
+#print "$mean +/- $stddev ($min - $max) N=$N, sum=$sum\n";
+
+
+
+
