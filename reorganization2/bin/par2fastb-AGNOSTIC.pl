@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict;
 use FastaReader;
 use Translation;
@@ -21,7 +21,7 @@ while(<IN>) {
   my $n=@$data;
   my $uniform=1;
   my $max=0;
-  for(my $i=0 ; $i<$n ; ++$i) 
+  for(my $i=0 ; $i<$n ; ++$i)
     { if($data->[$i]=~/nan/i) { $data->[$i]=0 } }
   for(my $i=0 ; $i<$n ; ++$i) { if($data->[$i]>$max) {$max=$data->[$i]} }
   for(my $i=0 ; $i<$n ; ++$i) { if($data->[$i]!=$max) {$uniform=0} }
@@ -60,5 +60,3 @@ while(<IN>) {
 }
 close(OUT);
 close(IN);
-
-

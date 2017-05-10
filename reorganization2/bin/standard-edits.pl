@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict;
 
 system("hmm-edit PARCLIP.hmm DTRK phastcons VAR all 0 0.01");

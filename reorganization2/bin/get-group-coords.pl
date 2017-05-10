@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict;
 
 die "get-group-coords.pl <in.groups> <out.txt>\n" unless @ARGV==2;

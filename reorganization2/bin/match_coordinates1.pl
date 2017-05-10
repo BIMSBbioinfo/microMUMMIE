@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #Program written to print genomic coordinates from UTR file in the output gff file September 27 2013 Samta Malhotra
 use ProgramName;
 use strict;
