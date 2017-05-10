@@ -1,4 +1,5 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
+
 use strict;
 use TempFilename;
 use File::Basename;
@@ -15,15 +16,15 @@ my $TARGETSCAN_FG_MEAN=3.0;
 my $dir_path = dirname(File::Spec->rel2abs(__FILE__));
 
 die "microMUMMIE.pl <mature-miRNAs.txt> <genome.2bit> <paralyzer-output-dir> <library-name> <out.gff> <posterior-decoding:0/1> <UTRs.txt> <Path of directory where you want to write all analysis in the end>\n"
-  unless @ARGV==8;
-my ($mature,$twoBitFile,$dataDir,$libraryName,$outfile,$wantPost,$UTR_FILE,$dir)=@ARGV;
+  unless @ARGV==10;
+my ($mature,$twoBitFile,$groups_,$distribution,$clusters,$libraryName,$outfile,$wantPost,$UTR_FILE,$dir)=@ARGV; #conda  - changed
 my $DASH_G=$wantPost ? "-I" : "-g";
 
 System("date");
 
-`cp $UTR_FILE site.hmm bg.hmm peak.hmm flank-trained.hmm metamodel.txt submodels.txt cons.schema nocons.schema make-tgf.pl hmm-edit random-HMM fasta-to-fastb.pl baum-welch model-combiner $dir`;
+`cp $dir_path/site.hmm $dir_path/bg.hmm $dir_path/peak.hmm $dir_path/flank-trained.hmm $dir_path/metamodel.txt $dir_path/submodels.txt $dir_path/cons.schema $dir_path/nocons.schema $dir_path/make-tgf.pl $dir_path/hmm-edit $dir_path/random-HMM $dir_path/fasta-to-fastb.pl $dir_path/baum-welch $dir_path/model-combiner $dir`;
 
-my $groupsFile="$dataDir/$libraryName.groups.csv";
+my $groupsFile="$groups_"; #conda - changed
 
 $CWD=$dir;
 print "
@@ -71,7 +72,7 @@ System("rm -rf $dir/chunks2") if -e "chunks2";
 
 System("mkdir $dir/chunks $dir/chunks2");
 
-System("$dir_path/par2fastb.pl $twoBitFile $dataDir $dir/chunks $UTR_FILE $libraryName");
+System("$dir_path/par2fastb.pl $twoBitFile $groups_ $distribution $clusters $dir/chunks $UTR_FILE $libraryName"); #conda - changed
 
 System("$dir_path/assemble-transcripts.pl chunks chunks2 ; rm -r $dir/chunks ; mv $dir/chunks2 $dir/chunks");
 
@@ -134,7 +135,7 @@ print "
 
 System("date");
 
-`rm out.gff test.gff chunk-preds.gff site.hmm bg.hmm peak.hmm flank-trained.hmm metamodel.txt submodels.txt cons.schema nocons.schema make-tgf.pl hmm-edit random-HMM fasta-to-fastb.pl baum-welch model-combiner $UTR_FILE filename filename1 filename2 filename3`;
+`rm test.gff chunk-preds.gff site.hmm bg.hmm peak.hmm flank-trained.hmm metamodel.txt submodels.txt cons.schema nocons.schema make-tgf.pl hmm-edit random-HMM fasta-to-fastb.pl baum-welch model-combiner filename filename1 filename2 filename3`;
 
 sub addScores
   {
