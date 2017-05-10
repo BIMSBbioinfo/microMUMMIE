@@ -31,7 +31,9 @@ die "par2fastb.pl <indir> <outdir> <lib1> <lib2> ...
       LIB.distribution.csv   LIB.groups.csv   LIB.clusters.csv
 " unless @ARGV>2;
 my $TWO_BIT_FILE=shift @ARGV;
-my $INDIR=shift @ARGV;
+my $groups_=shift @ARGV;
+my $distribution=shift @ARGV;
+my $clusters=shift @ARGV;
 my $OUTDIR=shift @ARGV;
 my $UTRS_FILE=shift @ARGV;
 my @libs=@ARGV;
@@ -80,7 +82,7 @@ for(my $i=0 ; $i<$numGenes ; ++$i) {
 # LOAD THE CLUSTER FILES - - - - - - - - - - - - - - - - - - - - - - - -
 print STDERR "loading clusters...\n";
 foreach my $lib (@libs) {
-  my $filename="$INDIR/$lib.clusters.csv";
+  my $filename="$clusters"; #conda - changed
   if(!-e $filename) {print STDERR "WARNING: $filename not found\n"}
   next unless -e $filename;
   open(IN,$filename) || die "can't open file $filename\n";
@@ -120,7 +122,7 @@ foreach my $libraryID (@libs) {
 
   # LOAD GROUP-GENE MAPPING
   my %groupToGene;
-  my $groupsFile="$INDIR/$libraryID.groups.csv";
+  my $groupsFile="$groups_"; #conda - changed
   open(IN,$groupsFile) || die $groupsFile;
   while(<IN>) {
     chomp;
@@ -132,7 +134,7 @@ foreach my $libraryID (@libs) {
   close(IN);
 
   # LOAD DISTRIBUTION FILE
-  my $filename="$INDIR/$libraryID.distribution";
+  my $filename="$distribution"; #conda - changed
   print STDERR "loading distr file $filename\n";
   open(IN,$filename) || die $filename;
   while(<IN>) {
@@ -150,7 +152,7 @@ foreach my $libraryID (@libs) {
     my $n=@$data;
     my $uniform=1;
     my $max=0;
-    for(my $i=0 ; $i<$n ; ++$i) 
+    for(my $i=0 ; $i<$n ; ++$i)
       { if($data->[$i]=~/nan/i) { $data->[$i]=0 } }
     for(my $i=0 ; $i<$n ; ++$i) { if($data->[$i]>$max) {$max=$data->[$i]} }
     for(my $i=0 ; $i<$n ; ++$i) { if($data->[$i]!=$max) {$uniform=0} }
@@ -171,7 +173,7 @@ removeEmptyTranscripts();
 # GENERATE OUTPUT - - - - - - - - - - - - - - - - - - - - - - - - - - -
 my $annotationOutfile="all.clusters.gff";
 if(@libs==1) {my $lib=$libs[0]; $annotationOutfile="$lib.clusters.gff"}
-open(ANNO,">$annotationOutfile") || 
+open(ANNO,">$annotationOutfile") ||
   die "can't write to file $annotationOutfile";
 my @geneIDs=keys %genes;
 my $numGenes=@geneIDs;
@@ -294,4 +296,3 @@ sub removeEmptyTranscripts
       }
     }
   }
-
