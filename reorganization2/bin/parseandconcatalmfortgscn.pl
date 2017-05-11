@@ -1,4 +1,4 @@
-#!/bin/perl
+#!/usr/bin/env perl
 #072012 -- write from scratch
 	#select 23 species, map species to spid, concat chunks; 
 	#add .. as missing; write in tgscn format

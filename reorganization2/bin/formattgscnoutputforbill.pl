@@ -1,4 +1,4 @@
-#!/bin/perl
+#!/usr/bin/env perl
 #073112 -- add replace group num (in cs); ****and join after changing (wasn't like that before!!!)
 #070512 -- add replace pcentile (b/c we run separately!)
 #052412  -- combined cs and pct

@@ -1,4 +1,4 @@
-#!/bin/perl
+#!/usr/bin/env perl
 use strict; use warnings;
 
 my $defidF="AGO_defid.txt";

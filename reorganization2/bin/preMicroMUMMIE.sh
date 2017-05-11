@@ -44,7 +44,14 @@ grep miRNA "$cwd/$readcsv" | awk 'BEGIN { FS = "," } ; { print $1"\t"$3-1"\t"$4"
 wait;
 
 #retrieve sequences in multiple formats for miRNAs found
-ruby -e 'first_line = true; while line = STDIN.gets; line.chomp!; if line =~ /^>/; puts unless first_line; print line[1..-1]; print " "; else; print line; end; first_line = false; end; puts' < $mirnaFasta  | awk 'BEGIN{FS=" "} {print $1 "\t" $6}' > $cwd/$output/tmp
+python -c """
+seqs = open('$mirnaFasta').readlines()
+
+for i in range(0, len(seqs), 2):
+    seq_id = seqs[i].split()[0][1:]
+    seq = seqs[i+1].strip()
+    print('%s\t%s' % (seq_id, seq))
+""" > $cwd/$output/tmp
 wait;
 matchMIRS.pl $cwd/$output/tmp $cwd/$output/$library.$top.count.txt $cwd/$output/$library.$top;
 wait;
