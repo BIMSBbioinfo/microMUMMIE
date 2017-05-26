@@ -127,7 +127,6 @@ while(<IN>) {
                         $chunkEnd=$mystartvalue;
                       }
 
-                      #print OUT "chr$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$lenn];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
 
                       print OUT "$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$lenn];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
                     }
@@ -146,7 +145,6 @@ while(<IN>) {
                             my $valtoo = $exonstart[$s];
                             my $valll = $valtoo+$difp;
                             $chunkEnd=$exonend[0];
-                            #print OUT "chr$chr\tBinding\tsite\t$valtoo\t$valll\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$len];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
 
                             print OUT "$chr\tBinding\tsite\t$valtoo\t$valll\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$len];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
                           }
@@ -163,7 +161,6 @@ while(<IN>) {
                             my $valto = $exonend[$v];
                             my $vall = $valto-$dif;
                             $myendvalue=$exonstart[$len];
-                            #print OUT "chr$chr\tBinding\tsite\t$vall\t$valto\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$b];prediction_start=$begin;prediction_end=$end;spliced_prediction$extra\n";
 
                             print OUT "$chr\tBinding\tsite\t$vall\t$valto\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$b];prediction_start=$begin;prediction_end=$end;spliced_prediction$extra\n";
                           }
@@ -171,7 +168,6 @@ while(<IN>) {
                           $chunkEnd=$mystartvalue;
                         }
 
-                        #print OUT "chr$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$len];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
 
                         print OUT "$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$len];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
                       }
@@ -188,7 +184,6 @@ while(<IN>) {
                               my $valtoo = $exonstart[$a];
                               my $valll = $valtoo+$difp;
                               $chunkEnd=$exonend[$b];
-                              #print OUT "chr$chr\tBinding\tsite\t$valtoo\t$valll\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
 
                             print OUT "$chr\tBinding\tsite\t$valtoo\t$valll\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
                           }
@@ -204,7 +199,6 @@ while(<IN>) {
                             my $dif=$exonstart[$sel]-$myendvalue;
                             my $valto = $exonend[$v];
                             my $vall = $valto-$dif;
-                            #print OUT "chr$chr\tBinding\tsite\t$vall\t$valto\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$b];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
 
                             print OUT "$chr\tBinding\tsite\t$vall\t$valto\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$b];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
                             $myendvalue=$exonstart[$sel];
@@ -212,7 +206,6 @@ while(<IN>) {
                           $chunkBegin=$myendvalue;
                           $chunkEnd=$mystartvalue;
                         }
-                        #print OUT "chr$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
 
                         print OUT "$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
                       }
@@ -228,7 +221,6 @@ while(<IN>) {
                             my $valtoo = $exonstart[$a];
                             my $valll = $valtoo+$difp;
                             $chunkEnd=$exonend[$b];
-                            #print OUT "chr$chr\tBinding\tsite\t$valtoo\t$valll\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
 
                             print OUT "$chr\tBinding\tsite\t$valtoo\t$valll\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
                           }
@@ -244,7 +236,6 @@ while(<IN>) {
                             my $dif=$exonstart[$sel]-$myendvalue;
                             my $valto = $exonend[$v];
                             my $vall = $valto-$dif;
-                            #print OUT "chr$chr\tBinding\tsite\t$vall\t$valto\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$b];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
 
                             print OUT "$chr\tBinding\tsite\t$vall\t$valto\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$b];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
                             $myendvalue=$exonstart[$sel];
@@ -252,7 +243,6 @@ while(<IN>) {
                           $chunkBegin=$myendvalue;
                           $chunkEnd=$mystartvalue;
                         }
-                        #print OUT "chr$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
 
                         print OUT "$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
                       }
@@ -269,7 +259,6 @@ while(<IN>) {
                             my $valtoo = $exonstart[$a];
                             my $valll = $valtoo+$difp;
                             $chunkEnd=$exonend[$b];
-                            #print OUT "chr$chr\tBinding\tsite\t$valtoo\t$valll\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
 
                             print OUT "$chr\tBinding\tsite\t$valtoo\t$valll\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
                           }
@@ -285,7 +274,6 @@ while(<IN>) {
                             my $dif=$exonstart[$sel]-$myendvalue;
                             my $valto = $exonend[$v];
                             my $vall = $valto-$dif;
-                            #print OUT "chr$chr\tBinding\tsite\t$vall\t$valto\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$b];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
 
                             print OUT "$chr\tBinding\tsite\t$vall\t$valto\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$b];prediction_start=$begin;prediction_end=$end;spliced_prediction;$extra\n";
                             $myendvalue=$exonstart[$sel];
@@ -293,13 +281,11 @@ while(<IN>) {
                           $chunkBegin=$myendvalue;
                           $chunkEnd=$mystartvalue;
                         }
-                        #print OUT "chr$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
 
                         print OUT "$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$se];prediction_start=$begin;prediction_end=$end;$extra\n"; last;
                       }
                     }
                     #print "Exonstart = $exonstart[$b], Predictionstart = $chunkBegin, Predictionend = $chunkEnd, Fileprediction = $begin, Fileend = $end, newpredictionstart =$newbegin, newpredictionend = $newend\n";
-                    #print OUT "chr$chr\tBinding\tsite\t$chunkBegin\t$chunkEnd\t$score\t$sstrand\t$dot\tgene=$substrate;transcriptid=$transcriptid;utr_start=$exonstart[0];utr_end=$exonend[$b];prediction_start=$begin;prediction_end=$end;$extra\n";
                   }
                 }
               }
