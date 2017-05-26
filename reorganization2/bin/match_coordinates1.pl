@@ -24,6 +24,12 @@ while(<IN>) {
   my $strand=$fields[6];
   my $dot=$fields[7];
   my $extra=$fields[8];
+
+  my $tag = "";
+  if (index($extra, "hsa-miR") != -1) {
+      $tag = "chr";
+  }
+
   #print "The gene is=$GeneID,\n";
   for(my $j=0 ; $j<$n ; ++$j) {  #as long as $j is smaller $n (number of fastb files)
 
