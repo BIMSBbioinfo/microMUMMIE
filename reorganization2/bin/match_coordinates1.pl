@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #Program written to print genomic coordinates from UTR file in the output gff file September 27 2013 Samta Malhotra
 use ProgramName;
 use strict;
@@ -54,7 +54,7 @@ while(<IN>) {
       open(FILE,"$dir/$substrate.fastb") || die "can't open $dir/$substrate.fastb\n"; # open fastb file
       while(<FILE>) {
         #if($_ =~ m/transcriptID=(ENST\d+)/) ; hard coded, only works for ENSEMBL transcript IDs
-        if($_ =~ m/transcriptID=(FBtr\d+)/) { # find line with TranscriptID
+        if($_ =~ m/transcriptID=(\D+\d+)/) { # find line with TranscriptID
           my $transcriptid = $1;  # define transcript ID
           if ($_ =~ m/numexons=(\d+)/){
             $numexons = $1; # define exon numer
