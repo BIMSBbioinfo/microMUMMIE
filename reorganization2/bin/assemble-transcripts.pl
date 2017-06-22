@@ -38,10 +38,10 @@ for(my $i=0 ; $i<$n ;++$i) {
 	$trackTypes{$id}=$type;
 	$deflines{$id}=$_;
        #if ($rest =~ m/transcriptID=ENST(\d+)\s+\/chr=(\d+)\s+\/begin=(\d+)\s+\/end=(\d+)/){
-          if($rest =~ m/transcriptID=(ENST\d+)/)
+          if($rest =~ m/transcriptID=(\D+\d+)/)
       {
            my $trans = $1;
-          if ($rest =~ m/chr=(.)/){   
+          if ($rest =~ m/chr=(.)/){
           my $chrom = $1;
          if ($rest =~ m/begin=(\d+)/){
           my $begin = $1;
@@ -53,7 +53,7 @@ for(my $i=0 ; $i<$n ;++$i) {
       }
       }
       }
-      
+
 
       }
       else {
@@ -61,13 +61,13 @@ for(my $i=0 ; $i<$n ;++$i) {
       }
 
     }
-    close(IN);  
-    
+    close(IN);
+
   }
 
   while ( my ($key, $value) = each(%basebegin) ) {
         #print "$key => $value\n";
-        
+
 
     }
     my ($value,$valuend);
@@ -86,12 +86,12 @@ for(my $i=0 ; $i<$n ;++$i) {
    $valuend = $baseend{$keyen};
   }
   }
-  push (@endall,$valuend);  
+  push (@endall,$valuend);
   }
 
 my $minstart = min @beginall;
 my $minend = max @endall;
-  
+
   open(OUT,">$outfile") || die "can't write to file $outfile\n";
   my @tracks=keys %tracks;
   foreach my $trackID (@tracks) {
@@ -118,4 +118,3 @@ my $minend = max @endall;
   }
   close(OUT);
 }
-
