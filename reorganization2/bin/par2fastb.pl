@@ -22,6 +22,8 @@ my $EXTEND_FOR_FOLDING=200; # number of bp to extend upstream
 #my $UTRS_FILE="Hi.Expressed.3UTRs.txt";
 #my $UTRS_FILE="UTRs.txt";
 
+my $tag = "";
+
 #=====================================================================
 # Don't modify anything below this point...
 #=====================================================================
@@ -137,10 +139,20 @@ foreach my $libraryID (@libs) {
   my $filename="$distribution"; #conda - changed
   print STDERR "loading distr file $filename\n";
   open(IN,$filename) || die $filename;
+  my $cnt=0;
   while(<IN>) {
     chomp;
     my @fields=split/,/,$_;
     my ($chr,$strand,$begin,$end,$groupID,$signalType)=@fields;
+
+    if ($cnt eq 0) {
+
+        if (index($chr, "chr") != -1) {
+            $tag = "chr";
+        }
+        ++$cnt;
+    }
+
     next unless $keepSignalTypes{$signalType};
     my $geneID=$groupToGene{$groupID};
     my $gene=$genes{$geneID};
@@ -209,7 +221,7 @@ for(my $i=0 ; $i<$numGenes ; ++$i) {
       writeAnno(\*ANNO,$utr,$geneID,$isoID,$strand);
       my $tempFile=TempFilename::generate();
       system("rm $tempFile") if -e $tempFile;
-      my $msg=`$twoBitToFa $TWO_BIT_FILE $tempFile -seq=chr$chr -start=$utrBegin -end=$utrEnd -noMask`;
+      my $msg=`$twoBitToFa $TWO_BIT_FILE $tempFile -seq=$tag$chr -start=$utrBegin -end=$utrEnd -noMask`;
       if($msg=~/is not in/) {next}
       if(-z "$tempFile") {system("rm $tempFile"); next}
       my $reader=new FastaReader("$tempFile");
