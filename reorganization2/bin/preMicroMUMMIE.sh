@@ -31,7 +31,9 @@ output=$library.$top.$specif
 
 cwd=$(pwd)
 
-grep -v  miRNA_primary_transcript $mirnaGFF > $cwd/tmp.p.gff3;
+if echo "$mirnaGFF" | grep -q "gff3"; then
+    grep  miRNA $mirnaGFF | grep -v miRNA_primary_transcript > $cwd/tmp.p.gff3;
+fi
 
 if [ ! -d "$cwd/$output" ]; then
   mkdir "$cwd/$output";
