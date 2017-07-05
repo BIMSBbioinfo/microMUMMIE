@@ -35,6 +35,10 @@ if echo "$mirnaGFF" | grep -q "gff3"; then
     grep  miRNA $mirnaGFF | grep -v miRNA_primary_transcript > $cwd/tmp.p.gff3;
 fi
 
+if echo "$mirnaGFF" | grep -q "gtf"; then
+    grep 'transcript_type "miRNA"; exon_id' $mirnaGFF  > $cwd/tmp.p.gff3;
+fi
+
 if [ ! -d "$cwd/$output" ]; then
   mkdir "$cwd/$output";
 else
